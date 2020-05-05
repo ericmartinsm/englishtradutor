@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-sm-6">
+                <app-progresso [NUMERO]="progresso"><!--O VALOR DO COMPONENTE PAI VAI SER RECEBIDO NO COMPONENTE FILHO A PARTIR DA VARIAVEL [PROGRESSO] E O VALOR QUE VAI SER TRANSMITIDO DO ELEMENTO PAI É O "PROGRESSO" OU SEJA,[ELEMENTOFILHOQUEVAIRECEBER]= "ELEMENTOPAIQUEVAIENVIAR"  (o elemento filho vai receber a informacao sempre que o elemtno pai for modificado)   --></app-progresso>
+            </div>
+            <div class="col-sm-6">
+                <div class="d-flex justify-content-end">
+                    <app-tentativas [tentativas]="tentativas"></app-tentativas>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h6>{{instrucao}}</h6>
+                <p>{{rodadaFrase.fraseEng}}</p> <!-- vai trazer os dados da classe frases do arquivo frases-mock-->
+                
+                <div class="form-group"><!-- ao input ser usado irá chamar a funcao atualizaResposta -->
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" (input)="atualizaResposta($event)" [value]="resposta"></textarea>
+                </div><!-- o metodo do angular $event captura o estado do elemento html no DOM no momento em que o evento é disparado, e pega uma copia e encaminha para dentro da nossa funcao  -->
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-primary" (click)= "verificarResposta()">Verificar</button><!-- vai captura o evento click no button e chamar a function verificarResposta-->
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+</div>

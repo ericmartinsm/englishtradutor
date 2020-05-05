@@ -1,0 +1,23 @@
+<app-topo></app-topo>
+
+<div *ngIf="jogoEmAndamento; else fimDeJogo"><!-- se jogoEmAndamento === true exibir app-painel; senao exibir fimdejogo-->
+    <app-painel (encerrarJogo)="encerrarJogo($event)" ></app-painel><!-- (metodo da classe que eu quero executar)="Quando executar esse evento com base no OutPut feito no componente filho(painel)"-->
+</div>
+<ng-template #fimDeJogo>
+    <div *ngIf="tipoEncerramento ==='derrota'; else fimDeJogoVitoria"  class="row"> <!-- if tipoEncerramento === derrota vai exibir a div caso vitoria vai apontar para outra div-->
+        <div class="col">
+            <h3 style="color: red;"> Sua vidas esgotaram</h3>
+            <button class="bth btn-primary" (click) = "reiniciarJogo()">Jogar novamente</button>
+        </div>
+    </div>
+</ng-template>
+<ng-template #fimDeJogoVitoria>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3 style="color: green;"> fim de jogo voce ganhou</h3>
+                <button class="bth btn-primary" (click) = "reiniciarJogo()">Jogar novamente</button>
+            </div>
+        </div>
+    </div> 
+</ng-template>
